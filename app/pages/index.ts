@@ -1,5 +1,5 @@
-import About from "./About";
+import ToolsAndTechStacks from "./ToolsAndTechStacks";
 import Projects from "./Projects";
 import Contact from "./Contact";
 
-export { About, Projects, Contact };
+export { ToolsAndTechStacks, Projects, Contact };
