@@ -1,13 +1,10 @@
-import React from "react";
-import Drawer from "./Drawer";
 import { IHeader } from "../interfaces";
-import Image from "next/image";
 
 const Header = ({ setIsOpen }: IHeader) => {
   return (
-    <header className="absolute inset-x-0 sticky top-0 z-40 bg-slate-900">
+    <header className="absolute inset-x-0 sticky top-0 z-40 bg-gradient-to-r from-zinc-900 to-zinc-700">
       <nav
-        className="flex items-center justify-between lg:justify-center p-6 lg:px-8"
+        className="flex items-center justify-end lg:justify-center p-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:hidden">
@@ -34,19 +31,19 @@ const Header = ({ setIsOpen }: IHeader) => {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          <a href="#" className="text-sm font-semibold leading-6 text-white">
+          <a href="#" className="text-sm font-normal leading-6 text-white">
             Who Am I?
           </a>
           <a
             href="#tools-and-techstacks"
-            className="text-sm font-semibold leading-6 text-white"
+            className="text-sm font-normal leading-6 text-white"
           >
             Tools & Tech Stacks
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-white">
+          <a href="#" className="text-sm font-normal leading-6 text-white">
             Projects
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-white">
+          <a href="#" className="text-sm font-normal leading-6 text-white">
             Contact
           </a>
         </div>
