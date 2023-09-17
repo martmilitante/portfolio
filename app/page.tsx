@@ -45,7 +45,7 @@ export default function Page() {
                 objectFit: "contain",
               }}
             />
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{`Hi, I'm Reymart`}</h1>
+            <h1 className="text-4xl dark:text-white font-bold tracking-tight text-gray-900 sm:text-6xl">{`Hi, I'm Reymart`}</h1>
 
             <p>{`An aspiring Frontend Engineer, Software Developer with a passion for crafting exceptional digital experiences. With a keen eye for design and a love for coding, I thrive on bringing creativity and functionality to the web. Whether it's building responsive websites or creating innovative software solutions, I'm dedicated to pushing the boundaries of what's possible in the digital world.`}</p>
             <div className="flex items-center gap-4">
