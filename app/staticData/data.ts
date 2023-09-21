@@ -42,6 +42,13 @@ export const toolsAndTechStacksData = [
     strokeColor: "stroke-lime-500",
   },
   {
+    src: "/images/mysql.svg",
+    title: "MySQL",
+    value: 80,
+    txtValue: "80%",
+    strokeColor: "stroke-orange-400",
+  },
+  {
     src: "/images/typescript.svg",
     title: "TypeScript",
     value: 80,
@@ -68,5 +75,24 @@ export const toolsAndTechStacksData = [
     value: 90,
     txtValue: "90%",
     strokeColor: "stroke-sky-700",
+  },
+];
+
+export const projectArr = [
+  {
+    heading: "Lorem Ipsum",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    heading: "Lorem Ipsum",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    heading: "Lorem Ipsum",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    heading: "Lorem Ipsum",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
 ];

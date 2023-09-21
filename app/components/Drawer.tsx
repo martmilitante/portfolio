@@ -18,7 +18,7 @@ const Drawer = ({ children, isOpen, setIsOpen }: IDrawer) => {
       >
         <article className="relative w-screen max-w-lg pb-10 flex flex-col space-y-6 overflow-y-scroll h-full">
           <button
-            className="p-4 font-bold text-lg"
+            className="p-4 font-bold text-lg px-10"
             onClick={() => {
               setIsOpen(false);
             }}

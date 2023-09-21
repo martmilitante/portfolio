@@ -11,23 +11,23 @@ export default function Page() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <main className="bg-gray">
+    <main className="bg-gray pb-60">
       <Header setIsOpen={setIsOpen} />
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
-        <a href="#" className="text-sm font-semibold leading-6 text-white">
+        <a href="#" className="text-sm font-semibold leading-6 text-gray px-10">
           Who Am I?
         </a>
         <a
           href="#tools-and-techstacks"
-          className="text-sm font-semibold leading-6 text-white"
+          className="text-sm font-semibold leading-6 text-gray px-10"
         >
           Tools & Tech Stacks
         </a>
-        <a href="#" className="text-sm font-semibold leading-6 text-white">
+        <a
+          href="#projects"
+          className="text-sm font-semibold leading-6 text-gray px-10"
+        >
           Projects
-        </a>
-        <a href="#" className="text-sm font-semibold leading-6 text-white">
-          Contact
         </a>
       </Drawer>
       <div className="relative isolate px-6 pt-14 lg:px-8">
@@ -73,10 +73,20 @@ export default function Page() {
                   alt=""
                 />
               </Link>
+              <Link
+                href="mailto:martmorbos@gmail.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image src="/images/gmail.png" width={30} height={30} alt="" />
+              </Link>
+              <Link href="tel:+639278571060" target="_blank" rel="noreferrer">
+                <Image src="/images/phone.png" width={30} height={30} alt="" />
+              </Link>
             </div>
             <a
               href="/Reymart-Resume.pdf"
-              className="rounded py-3 px-8 font-normal text-white bg-gradient-to-r from-zinc-900 to-zinc-700"
+              className="rounded py-3 px-8 font-normal text-white bg-slate-800"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -87,7 +97,6 @@ export default function Page() {
       </div>
       <ToolsAndTechStacks />
       <Projects />
-      <Contact />
     </main>
   );
 }
