@@ -37,21 +37,21 @@ export const toolsAndTechStacksData = [
   {
     src: "/images/nodejs.svg",
     title: "NodeJs",
-    value: 70,
+    value: 75,
     txtValue: "70%",
     strokeColor: "stroke-lime-500",
   },
   {
     src: "/images/mysql.svg",
     title: "MySQL",
-    value: 80,
+    value: 90,
     txtValue: "80%",
     strokeColor: "stroke-orange-400",
   },
   {
     src: "/images/typescript.svg",
     title: "TypeScript",
-    value: 80,
+    value: 90,
     txtValue: "80%",
     strokeColor: "stroke-sky-600",
   },
@@ -65,7 +65,7 @@ export const toolsAndTechStacksData = [
   {
     src: "/images/docker.svg",
     title: "Docker",
-    value: 80,
+    value: 85,
     txtValue: "80%",
     strokeColor: "stroke-sky-400",
   },

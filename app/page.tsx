@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
-import { ToolsAndTechStacks, Projects, Contact } from "./pages";
+import { ToolsAndTechStacks, Projects } from "./pages";
 
 export default function Page() {
   const [isOpen, setIsOpen] = useState(false);

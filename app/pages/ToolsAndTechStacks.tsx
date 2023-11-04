@@ -7,7 +7,7 @@ import styles from "../styles/style.module.scss";
 
 const ToolsAndTechStacks = () => {
   return (
-    <div className=" px-12">
+    <div className="px-12">
       <h1 className="text-center text-xl font-bold pb-24">
         Tools & Tech Stacks
       </h1>
