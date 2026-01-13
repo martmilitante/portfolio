@@ -1,48 +1,72 @@
+"use client";
+import { useState, useEffect } from "react";
 import { IHeader } from "../interfaces";
+import { ModeToggle } from "@/components/ui/mode-toggle";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Menu } from "lucide-react";
 
 const Header = ({ setIsOpen }: IHeader) => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { href: "#about", label: "About" },
+    { href: "#tools-and-techstacks", label: "Skills" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
+  ];
+
   return (
-    <header className="absolute inset-x-0 sticky top-0 z-40 bg-slate-800">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled ? "glass backdrop-blur-xl py-3" : "bg-transparent py-6"
+      }`}
+    >
       <nav
-        className="flex items-center justify-end lg:justify-center p-6 lg:px-8"
+        className="flex items-center justify-between px-6 lg:px-12 max-w-7xl mx-auto"
         aria-label="Global"
       >
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
-            onClick={() => setIsOpen(true)}
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </button>
+        <div className="flex items-center gap-2">
+          <span className="text-2xl font-bold gradient-text">RM</span>
+          <Badge variant="secondary" className="hidden sm:inline-flex glass">
+            Portfolio
+          </Badge>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          <a href="#" className="text-sm font-normal leading-6 text-white">
-            Who Am I?
-          </a>
-          <a
-            href="#tools-and-techstacks"
-            className="text-sm font-normal leading-6 text-white"
-          >
-            Tools & Tech Stacks
-          </a>
-          <a href="#" className="text-sm font-normal leading-6 text-white">
-            Projects
-          </a>
+
+        <div className="flex items-center gap-4">
+          <div className="hidden lg:flex lg:gap-x-8 lg:mr-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium leading-6 text-foreground/80 hover:text-foreground animated-underline transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <ModeToggle />
+
+          <div className="flex lg:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsOpen(true)}
+              className="glass"
+            >
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Open main menu</span>
+            </Button>
+          </div>
         </div>
       </nav>
     </header>
