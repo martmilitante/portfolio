@@ -111,7 +111,7 @@ export default function Page() {
 
             {/* Name and Title */}
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-              <span className="text-foreground">Hi, I'm </span>
+              <span className="text-foreground">Hi, I&apos;m </span>
               <span className="gradient-text">Reymart</span>
             </h1>
 
@@ -200,10 +200,10 @@ export default function Page() {
       <section id="contact" className="py-24 px-6 lg:px-12 relative">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-5xl font-bold mb-6">
-            <span className="gradient-text">Let's Work Together</span>
+            <span className="gradient-text">Let&apos;s Work Together</span>
           </h2>
           <p className="text-muted-foreground text-lg mb-10">
-            Have a project in mind? Let's create something amazing together.
+            Have a project in mind? Let&apos;s create something amazing together.
           </p>
           <Button
             size="lg"
