@@ -102,7 +102,7 @@ export default function Page() {
             <div className="relative inline-block mb-8">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full blur-2xl opacity-50 animate-pulse" />
               <Avatar className="relative w-[200px] h-[200px] border-4 border-border shadow-2xl hover:scale-105 transition-transform duration-300">
-                <AvatarImage src="/profile.png" alt="Reymart Militante" />
+                <AvatarImage src="/portfolio/profile.png" alt="Reymart Militante" />
                 <AvatarFallback className="text-4xl bg-gradient-to-br from-cyan-500 to-teal-500 text-white">
                   RM
                 </AvatarFallback>
