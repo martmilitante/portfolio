@@ -1,14 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export',
-  basePath: '/portfolio',
-  assetPrefix: '/portfolio',
-  images: {
-    unoptimized: true,
-  },
-  env: {
-    NEXT_PUBLIC_BASE_PATH: '/portfolio'
-  }
-}
+const nextConfig = {};
 
-module.exports = nextConfig
+module.exports = nextConfig;

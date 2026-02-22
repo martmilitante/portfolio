@@ -21,13 +21,16 @@ const Header = ({ setIsOpen }: IHeader) => {
     { href: "#about", label: "About" },
     { href: "#tools-and-techstacks", label: "Skills" },
     { href: "#projects", label: "Projects" },
+    { href: "#experience", label: "Experience" },
     { href: "#contact", label: "Contact" },
   ];
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass backdrop-blur-xl py-3" : "bg-transparent py-6"
+        scrolled
+          ? "glass backdrop-blur-xl py-3 border-b border-white/10"
+          : "bg-transparent py-6"
       }`}
     >
       <nav
@@ -35,8 +38,13 @@ const Header = ({ setIsOpen }: IHeader) => {
         aria-label="Global"
       >
         <div className="flex items-center gap-2">
-          <span className="text-2xl font-bold gradient-text">RM</span>
-          <Badge variant="secondary" className="hidden sm:inline-flex glass">
+          <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">
+            RM
+          </span>
+          <Badge
+            variant="secondary"
+            className="hidden sm:inline-flex glass border-white/10"
+          >
             Portfolio
           </Badge>
         </div>
@@ -47,7 +55,7 @@ const Header = ({ setIsOpen }: IHeader) => {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium leading-6 text-foreground/80 hover:text-foreground animated-underline transition-colors"
+                className="text-sm font-medium leading-6 text-foreground/80 hover:text-indigo-400 transition-colors"
               >
                 {link.label}
               </a>
@@ -61,7 +69,7 @@ const Header = ({ setIsOpen }: IHeader) => {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(true)}
-              className="glass"
+              className="glass border-white/10"
             >
               <Menu className="h-5 w-5" />
               <span className="sr-only">Open main menu</span>
