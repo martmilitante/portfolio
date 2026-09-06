@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,6 +21,7 @@ export default function Contact() {
     email: "",
     company: "",
     message: "",
+    website: "",
   });
   const [formStatus, setFormStatus] = useState<
     "idle" | "sending" | "success" | "error"
@@ -38,43 +38,32 @@ export default function Contact() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      setFormStatus("error");
-      toast.error("Message could not be sent", {
-        description: "Email service configuration is incomplete.",
-      });
-      return;
-    }
-
     setFormStatus("sending");
 
     try {
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          company: formData.company,
-          message: formData.message,
-          to_email: "martmorbos@gmail.com",
-        },
-        publicKey
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-      setFormData({ name: "", email: "", company: "", message: "" });
+      if (!response.ok) {
+        const result = await response.json().catch(() => null);
+        throw new Error(result?.error ?? "Contact form request failed");
+      }
+
+      setFormData({ name: "", email: "", company: "", message: "", website: "" });
       setFormStatus("success");
       toast.success("Message sent successfully", {
         description: "Thanks for reaching out. I will get back to you soon.",
       });
-    } catch {
+    } catch (error) {
       setFormStatus("error");
       toast.error("Message could not be sent", {
-        description: "Please try again in a moment.",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Please try again in a moment.",
       });
     }
   };
@@ -193,6 +182,10 @@ export default function Contact() {
                       required
                       className="bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 rounded-lg"
                     />
+                  </div>
+                  <div className="absolute -left-[9999px]" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <Input id="website" name="website" tabIndex={-1} autoComplete="off" />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-sm font-semibold text-foreground/90">
