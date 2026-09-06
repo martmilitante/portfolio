@@ -108,27 +108,30 @@ export const toolsAndTechStacksData = [
 
 export const projectArr = [
   {
-    heading: "E-Commerce Platform",
-    body: "A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include real-time inventory management, secure payment integration, and responsive design for seamless shopping experiences.",
+    heading: "Reymart Militante Portfolio",
+    body: "A personal portfolio designed and built to showcase my work, experience, and approach to creating thoughtful web applications.",
+    image: "/images/portfolio-preview.png",
+    status: "Live",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    codeUrl: "https://github.com/martmilitante/portfolio",
+    liveUrl: "https://reymartmilitante.dev/",
   },
   {
-    heading: "Task Management Dashboard",
-    body: "An intuitive project management tool built with Next.js and TypeScript. Implements drag-and-drop functionality, real-time collaboration, and advanced filtering for enhanced productivity.",
+    heading: "RankPilot AI",
+    body: "An AI-first SEO operating system that turns website data into clear, prioritized action through crawling, issue detection, recommendations, and professional reports.",
+    image: null,
+    status: "In development",
+    technologies: ["Next.js", "TypeScript", "PostgreSQL", "AI"],
+    codeUrl: "https://github.com/martmilitante/rankpilot-ai",
+    liveUrl: null,
   },
   {
-    heading: "Social Media Analytics",
-    body: "A comprehensive analytics dashboard for social media insights. Built with React and D3.js, featuring interactive charts, engagement metrics, and automated reporting capabilities.",
-  },
-  {
-    heading: "Portfolio CMS",
-    body: "A headless CMS for creative professionals using Laravel and React. Offers customizable templates, media management, and SEO optimization for showcasing work effectively.",
-  },
-  {
-    heading: "Fitness Tracking App",
-    body: "A mobile-responsive fitness application with workout tracking, progress visualization, and personalized recommendations. Built using React Native and Firebase for real-time data sync.",
-  },
-  {
-    heading: "Restaurant Booking System",
-    body: "An online reservation platform with table management, automated confirmations, and integration with popular calendar apps. Developed with PHP, Laravel, and MySQL.",
+    heading: "Client Work",
+    body: "Selected client projects are kept private under confidentiality agreements and are not available for public display.",
+    image: null,
+    status: "Private",
+    technologies: ["Frontend", "Backend", "Product engineering"],
+    codeUrl: null,
+    liveUrl: null,
   },
 ];
