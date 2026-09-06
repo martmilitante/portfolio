@@ -1,5 +1,6 @@
 "use client";
 
+import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -14,6 +15,38 @@ import {
 } from "@radix-ui/react-icons";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState<"idle" | "ready">("idle");
+
+  const handleChange = (
+    field: keyof typeof formData,
+    value: string
+  ) => {
+    setFormData((current) => ({ ...current, [field]: value }));
+    setFormStatus("idle");
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const subject = `Portfolio inquiry from ${formData.name}`;
+    const body = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      "",
+      formData.message,
+    ].join("\n");
+
+    window.location.href = `mailto:martmorbos@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+    setFormStatus("ready");
+  };
+
   return (
     <section id="contact" className="py-24 px-6 lg:px-12 relative">
       <div className="max-w-5xl mx-auto">
@@ -112,7 +145,7 @@ export default function Contact() {
               <CardContent className="p-8">
                 <form
                   className="space-y-6"
-                  onSubmit={(e) => e.preventDefault()}
+                  onSubmit={handleSubmit}
                 >
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-semibold text-foreground/90">
@@ -120,7 +153,12 @@ export default function Contact() {
                     </label>
                     <Input
                       id="name"
+                      name="name"
                       placeholder="John Doe"
+                      value={formData.name}
+                      onChange={(event) => handleChange("name", event.target.value)}
+                      autoComplete="name"
+                      required
                       className="bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 rounded-lg"
                     />
                   </div>
@@ -131,7 +169,12 @@ export default function Contact() {
                     <Input
                       id="email"
                       type="email"
+                      name="email"
                       placeholder="john@example.com"
+                      value={formData.email}
+                      onChange={(event) => handleChange("email", event.target.value)}
+                      autoComplete="email"
+                      required
                       className="bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 rounded-lg"
                     />
                   </div>
@@ -141,7 +184,11 @@ export default function Contact() {
                     </label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Tell me about your project..."
+                      value={formData.message}
+                      onChange={(event) => handleChange("message", event.target.value)}
+                      required
                       className="min-h-[150px] bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 resize-none rounded-lg"
                     />
                   </div>
@@ -152,6 +199,15 @@ export default function Contact() {
                     Send Message
                     <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </Button>
+                  <p
+                    className="text-sm text-muted-foreground/80"
+                    role="status"
+                    aria-live="polite"
+                  >
+                    {formStatus === "ready"
+                      ? "Your email client should open with the message ready to send."
+                      : "The message will open in your default email client."}
+                  </p>
                 </form>
               </CardContent>
             </Card>
