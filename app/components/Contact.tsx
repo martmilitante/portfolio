@@ -1,12 +1,13 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Send, Github, Linkedin, Twitter } from "lucide-react";
+import { Loader2, Mail, Send } from "lucide-react";
 import Link from "next/link";
 import {
   GitHubLogoIcon,
@@ -20,7 +21,9 @@ export default function Contact() {
     email: "",
     message: "",
   });
-  const [formStatus, setFormStatus] = useState<"idle" | "ready">("idle");
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
 
   const handleChange = (
     field: keyof typeof formData,
@@ -30,21 +33,38 @@ export default function Contact() {
     setFormStatus("idle");
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const subject = `Portfolio inquiry from ${formData.name}`;
-    const body = [
-      `Name: ${formData.name}`,
-      `Email: ${formData.email}`,
-      "",
-      formData.message,
-    ].join("\n");
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-    window.location.href = `mailto:martmorbos@gmail.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    setFormStatus("ready");
+    if (!serviceId || !templateId || !publicKey) {
+      setFormStatus("error");
+      return;
+    }
+
+    setFormStatus("sending");
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: "martmorbos@gmail.com",
+        },
+        publicKey
+      );
+
+      setFormData({ name: "", email: "", message: "" });
+      setFormStatus("success");
+    } catch {
+      setFormStatus("error");
+    }
   };
 
   return (
@@ -194,19 +214,26 @@ export default function Contact() {
                   </div>
                   <Button
                     type="submit"
+                    disabled={formStatus === "sending"}
                     className="w-full bg-gradient-to-r from-emerald-600 to-slate-600 text-white hover:from-emerald-700 hover:to-slate-700 shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 group font-semibold rounded-lg"
                   >
-                    Send Message
-                    <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    {formStatus === "sending" ? "Sending..." : "Send Message"}
+                    {formStatus === "sending" ? (
+                      <Loader2 className="ml-2 w-4 h-4 animate-spin" />
+                    ) : (
+                      <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    )}
                   </Button>
                   <p
                     className="text-sm text-muted-foreground/80"
                     role="status"
                     aria-live="polite"
                   >
-                    {formStatus === "ready"
-                      ? "Your email client should open with the message ready to send."
-                      : "The message will open in your default email client."}
+                    {formStatus === "success"
+                      ? "Message sent successfully. I will get back to you soon."
+                      : formStatus === "error"
+                        ? "Unable to send your message. Please try again later."
+                        : "Your message will be sent securely."}
                   </p>
                 </form>
               </CardContent>
