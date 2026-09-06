@@ -82,12 +82,13 @@ portfolio/
 
 ## Environment Variables
 
-The contact form uses [EmailJS](https://www.emailjs.com/) to send messages directly from the browser. From the project root, copy `.env.local.example` to `.env.local` and replace the placeholder values:
+The contact form sends through a server-side route using [EmailJS](https://www.emailjs.com/). From the project root, copy `.env.local.example` to `.env.local` and replace the placeholder values:
 
 ```env
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_emailjs_service_id
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+EMAILJS_SERVICE_ID=your_emailjs_service_id
+EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+EMAILJS_PRIVATE_KEY=your_emailjs_private_key
 ```
 
 PowerShell:
@@ -104,7 +105,9 @@ Configure the EmailJS template to deliver messages to `martmorbos@gmail.com`. Th
 - `message`
 - `to_email`
 
-Restart the development server after changing environment variables. EmailJS public keys are intended for browser use, but private credentials should never be added to `.env.local` or exposed to the client.
+Set the EmailJS template recipient to `{{to_email}}`; the server always supplies `martmorbos@gmail.com` and does not accept a recipient from the browser.
+
+Restart the development server after changing environment variables. The private key is required when EmailJS API strict mode is enabled. Add it only to local/Vercel server environment variables; never expose it with `NEXT_PUBLIC_` or include it in client code.
 
 ## Troubleshooting
 
