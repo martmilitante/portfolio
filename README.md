@@ -1,34 +1,133 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Reymart Militante Portfolio
 
-## Getting Started
+A personal portfolio built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
-First, run the development server:
+## Local Setup
+
+### Prerequisites
+
+- **Node.js**: Version 18.x or higher ([Download](https://nodejs.org/))
+- **npm**: Included with Node.js
+- **Git**: For version control ([Download](https://git-scm.com/))
+
+Verify your installations:
+
+```bash
+node --version
+npm --version
+git --version
+```
+
+### Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone <repository-url>
+cd portfolio
+npm install
+```
+
+You can also use `pnpm install` or `yarn install` if preferred.
+
+### Development
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application runs at [http://localhost:3001](http://localhost:3001).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Build and start the production application:
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+Run the linter with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```text
+portfolio/
+├── app/                 # Next.js app directory and page sections
+├── components/         # Shared UI components
+├── lib/                 # Utility functions
+├── public/              # Static assets
+├── package.json         # Dependencies and scripts
+├── tailwind.config.js   # Tailwind CSS configuration
+├── tsconfig.json        # TypeScript configuration
+└── next.config.js       # Next.js configuration
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technology Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Next.js 14](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Radix UI](https://www.radix-ui.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Lucide React](https://lucide.dev/)
+- [next-themes](https://github.com/pacocoursey/next-themes)
+- [Vercel Analytics](https://vercel.com/analytics)
+
+## Environment Variables
+
+The project currently does not require environment variables. If variables are added later, create a `.env.local` file in the project root and restart the development server after making changes.
+
+## Troubleshooting
+
+If port `3001` is already in use, start the development server on another port:
+
+```bash
+npm run dev -- -p 3002
+```
+
+If dependencies need to be reinstalled:
+
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
+
+On Windows PowerShell, remove the dependencies with:
+
+```powershell
+Remove-Item -Recurse -Force node_modules
+Remove-Item package-lock.json
+npm install
+```
+
+To clear the Next.js build cache:
+
+```bash
+rm -rf .next
+npm run build
+```
+
+## Deployment
+
+This project is optimized for deployment on [Vercel](https://vercel.com/):
+
+1. Push the repository to GitHub.
+2. Import the repository into Vercel.
+3. Confirm the project settings.
+4. Deploy the application.
+
+See the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for additional details.
+
+## Resources
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Documentation](https://react.dev/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)

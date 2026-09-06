@@ -115,17 +115,17 @@ body::before {
   background:
     radial-gradient(
       circle at 20% 50%,
-      rgba(99, 102, 241, 0.08) 0%,
+      rgba(5, 150, 105, 0.08) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 80% 80%,
-      rgba(168, 85, 247, 0.08) 0%,
+      rgba(71, 85, 105, 0.08) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 40% 20%,
-      rgba(59, 130, 246, 0.05) 0%,
+      rgba(16, 185, 129, 0.05) 0%,
       transparent 50%
     );
   animation: gradientShift 15s ease infinite;
@@ -137,17 +137,17 @@ body::before {
   background:
     radial-gradient(
       circle at 20% 50%,
-      rgba(99, 102, 241, 0.15) 0%,
+      rgba(5, 150, 105, 0.15) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 80% 80%,
-      rgba(168, 85, 247, 0.15) 0%,
+      rgba(71, 85, 105, 0.15) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 40% 20%,
-      rgba(59, 130, 246, 0.1) 0%,
+      rgba(16, 185, 129, 0.1) 0%,
       transparent 50%
     );
   opacity: 1;
@@ -239,8 +239,8 @@ body::before {
 
 .glass-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 48px 0 rgba(99, 102, 241, 0.2);
-  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 12px 48px 0 rgba(5, 150, 105, 0.2);
+  border-color: rgba(5, 150, 105, 0.4);
 }
 
 .dark .glass-card:hover {
@@ -253,14 +253,14 @@ body::before {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  background: linear-gradient(135deg, #10b981 0%, #475569 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-alt {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #10b981 0%, #475569 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -283,7 +283,7 @@ body::before {
   inset: 0;
   border-radius: 1rem;
   padding: 2px;
-  background: linear-gradient(135deg, #6366f1, #a855f7, #3b82f6);
+  background: linear-gradient(135deg, #10b981, #475569, #10b981);
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -303,7 +303,7 @@ body::before {
 
 .hover-lift:hover {
   transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 20px 60px rgba(5, 150, 105, 0.3);
 }
 
 /* Animated underline */
@@ -408,4 +408,86 @@ body::before {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #14b8a6, #06b6d4);
+}
+
+/* Professional typography enhancements */
+@layer components {
+  /* Animate gradient background */
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-animation 6s ease infinite;
+  }
+
+  /* Professional link styling */
+  a {
+    @apply transition-all duration-300;
+  }
+
+  /* Enhanced form inputs */
+  input,
+  textarea,
+  select {
+    @apply transition-all duration-300;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply outline-none;
+  }
+
+  /* Better button base styles */
+  button {
+    @apply transition-all duration-300 rounded-lg;
+  }
+
+  /* Improved section spacing */
+  section {
+    @apply scroll-mt-20;
+  }
+
+  /* Professional card improvements */
+  .glass-card {
+    @apply backdrop-blur-2xl;
+  }
+
+  /* Better badge styling */
+  .badge {
+    @apply font-semibold transition-all duration-300;
+  }
+
+  /* Improved heading hierarchy */
+  h1 {
+    @apply font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply font-bold tracking-tight;
+  }
+
+  h3 {
+    @apply font-bold tracking-tight;
+  }
+
+  /* Professional text styling */
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* Better focus rings */
+  :focus-visible {
+    @apply outline-none ring-2 ring-transparent;
+  }
 }

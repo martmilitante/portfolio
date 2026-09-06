@@ -50,13 +50,13 @@ export default function TechStack() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             Tech{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-slate-600">
               Stack
             </span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground/90 text-lg max-w-2xl mx-auto font-light">
             The tools and technologies I use to build modern web applications.
           </p>
         </motion.div>
@@ -71,16 +71,16 @@ export default function TechStack() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card className="glass-card border-white/10 hover-lift h-full group overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-slate-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <CardContent className="p-6 relative z-10">
-                  <h3 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+                  <h3 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-slate-400">
                     {category.name}
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {category.items.map((item, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1.5 rounded-full text-sm font-medium bg-foreground/5 border border-white/10 hover:bg-indigo-500/20 hover:border-indigo-500/50 hover:text-indigo-300 transition-all cursor-default"
+                        className="px-3 py-1.5 rounded-full text-sm font-medium bg-foreground/5 border border-white/10 hover:bg-emerald-500/20 hover:border-emerald-500/50 hover:text-emerald-300 transition-all cursor-default"
                       >
                         {item}
                       </span>

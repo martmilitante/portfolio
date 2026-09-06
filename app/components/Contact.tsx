@@ -24,13 +24,13 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Get In{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+            Get In
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-slate-600">
               Touch
             </span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground/90 text-lg max-w-2xl mx-auto font-light">
             Have a project in mind or just want to say hi? I&apos;d love to hear
             from you.
           </p>
@@ -45,32 +45,32 @@ export default function Contact() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold mb-4">
-                Let&apos;s talk about everything!
+              <h3 className="text-2xl font-bold mb-4 tracking-tight">
+                Let&apos;s collaborate!
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Don&apos;t like forms? Send me an email.
+              <p className="text-muted-foreground/90 leading-relaxed font-light">
+                Whether through email or social media, I&apos;m always open to new opportunities.
               </p>
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-500">
-                <Mail className="w-6 h-6" />
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-600/20 to-slate-600/20 flex items-center justify-center text-emerald-500">
+                <Mail className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Email me at</p>
+                <p className="text-sm text-muted-foreground/80 font-light">Email me at</p>
                 <a
                   href="mailto:martmorbos@gmail.com"
-                  className="text-lg font-medium hover:text-indigo-400 transition-colors"
+                  className="text-lg font-semibold hover:text-emerald-400 transition-colors duration-300"
                 >
                   martmorbos@gmail.com
                 </a>
               </div>
             </div>
 
-            <div className="pt-8 border-t border-white/10">
-              <p className="text-sm text-muted-foreground mb-4">
-                Follow me on social media
+            <div className="pt-8 border-t border-slate-200 dark:border-white/10">
+              <p className="text-sm text-muted-foreground/80 mb-4 font-light">
+                Connect on social media
               </p>
               <div className="flex gap-4">
                 {[
@@ -89,7 +89,7 @@ export default function Contact() {
                       key={index}
                       variant="outline"
                       size="icon"
-                      className="glass rounded-full hover:bg-indigo-500/10 hover:text-indigo-400 hover:border-indigo-500/50 transition-all"
+                      className="glass rounded-lg hover:bg-emerald-600/20 hover:text-emerald-400 hover:border-emerald-600/30 transition-all duration-300"
                       asChild
                     >
                       <Link href={social.href} target="_blank" rel="noreferrer">
@@ -108,46 +108,46 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <Card className="glass-card border-white/10">
+            <Card className="glass-card border-slate-200 dark:border-white/10 hover:border-emerald-600/40 dark:hover:border-emerald-500/40 transition-all duration-300">
               <CardContent className="p-8">
                 <form
                   className="space-y-6"
                   onSubmit={(e) => e.preventDefault()}
                 >
                   <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">
+                    <label htmlFor="name" className="text-sm font-semibold text-foreground/90">
                       Name
                     </label>
                     <Input
                       id="name"
                       placeholder="John Doe"
-                      className="bg-background/50 border-white/10 focus:border-indigo-500/50 focus:ring-indigo-500/50 transition-all"
+                      className="bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 rounded-lg"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
+                    <label htmlFor="email" className="text-sm font-semibold text-foreground/90">
                       Email
                     </label>
                     <Input
                       id="email"
                       type="email"
                       placeholder="john@example.com"
-                      className="bg-background/50 border-white/10 focus:border-indigo-500/50 focus:ring-indigo-500/50 transition-all"
+                      className="bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 rounded-lg"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
+                    <label htmlFor="message" className="text-sm font-semibold text-foreground/90">
                       Message
                     </label>
                     <Textarea
                       id="message"
                       placeholder="Tell me about your project..."
-                      className="min-h-[150px] bg-background/50 border-white/10 focus:border-indigo-500/50 focus:ring-indigo-500/50 transition-all resize-none"
+                      className="min-h-[150px] bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 resize-none rounded-lg"
                     />
                   </div>
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 shadow-lg hover:shadow-indigo-500/25 transition-all group"
+                    className="w-full bg-gradient-to-r from-emerald-600 to-slate-600 text-white hover:from-emerald-700 hover:to-slate-700 shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 group font-semibold rounded-lg"
                   >
                     Send Message
                     <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

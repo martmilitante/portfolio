@@ -63,18 +63,18 @@ export default function Experience() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Work{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+            My{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-slate-600">
               Experience
             </span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground/90 text-lg max-w-2xl mx-auto font-light">
             My professional journey and career highlights.
           </p>
         </motion.div>
 
-        <div className="relative border-l-2 border-indigo-500/30 ml-4 md:ml-1/2 space-y-12">
+        <div className="relative border-l-2 border-emerald-500/30 ml-4 md:ml-1/2 space-y-12">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
@@ -84,21 +84,21 @@ export default function Experience() {
               transition={{ duration: 0.5, delay: index * 0.2 }}
               className="relative pl-8 md:pl-0"
             >
-              <div className="absolute -left-[41px] md:left-1/2 md:-translate-x-1/2 top-0 w-8 h-8 rounded-full bg-background border-4 border-indigo-500 flex items-center justify-center z-10 shadow-[0_0_15px_rgba(99,102,241,0.5)]">
-                <Briefcase className="w-3 h-3 text-indigo-500" />
+              <div className="absolute -left-[41px] md:left-1/2 md:-translate-x-1/2 top-0 w-8 h-8 rounded-full bg-background border-4 border-emerald-500 flex items-center justify-center z-10 shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+                <Briefcase className="w-3 h-3 text-emerald-500" />
               </div>
 
               <div
                 className={`md:w-1/2 ${index % 2 === 0 ? "md:pr-12 md:ml-0" : "md:pl-12 md:ml-auto"}`}
               >
                 <Card className="glass-card border-white/10 hover-lift relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-slate-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <CardContent className="p-6 relative z-10">
-                    <div className="flex items-center gap-2 text-indigo-400 mb-2 text-sm font-medium">
+                    <div className="flex items-center gap-2 text-emerald-400 mb-2 text-sm font-medium">
                       <Calendar className="w-4 h-4" />
                       {exp.date}
                     </div>
-                    <h3 className="text-2xl font-bold mb-1 group-hover:text-indigo-400 transition-colors">
+                    <h3 className="text-2xl font-bold mb-1 group-hover:text-emerald-400 transition-colors">
                       {exp.title}
                     </h3>
                     <h4 className="text-lg text-muted-foreground mb-4">

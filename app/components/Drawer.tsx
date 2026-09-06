@@ -17,7 +17,7 @@ const Drawer = ({ children, isOpen, setIsOpen }: IDrawer) => {
         className="w-[300px] sm:w-[400px] glass-card border-l border-white/10"
       >
         <SheetHeader>
-          <SheetTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">
+          <SheetTitle className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-slate-500">
             Navigation
           </SheetTitle>
           <SheetDescription>Explore my portfolio sections</SheetDescription>

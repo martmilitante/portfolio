@@ -27,9 +27,9 @@ const Header = ({ setIsOpen }: IHeader) => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "glass backdrop-blur-xl py-3 border-b border-white/10"
+          ? "glass backdrop-blur-2xl py-3 border-b border-white/5 shadow-lg shadow-black/5"
           : "bg-transparent py-6"
       }`}
     >
@@ -37,27 +37,28 @@ const Header = ({ setIsOpen }: IHeader) => {
         className="flex items-center justify-between px-6 lg:px-12 max-w-7xl mx-auto"
         aria-label="Global"
       >
-        <div className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">
+        <div className="flex items-center gap-3">
+          <span className="text-xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-slate-600 hover:from-emerald-500 hover:to-slate-500 transition-all duration-300">
             RM
           </span>
           <Badge
             variant="secondary"
-            className="hidden sm:inline-flex glass border-white/10"
+            className="hidden sm:inline-flex glass border-white/20 bg-white/5 backdrop-blur-sm text-xs font-semibold"
           >
-            Portfolio
+            PORTFOLIO
           </Badge>
         </div>
 
-        <div className="flex items-center gap-4">
-          <div className="hidden lg:flex lg:gap-x-8 lg:mr-4">
+        <div className="flex items-center gap-6">
+          <div className="hidden lg:flex lg:gap-x-10 lg:mr-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium leading-6 text-foreground/80 hover:text-indigo-400 transition-colors"
+                className="text-sm font-semibold leading-6 text-foreground/70 hover:text-foreground transition-all duration-300 relative group"
               >
                 {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-slate-500 group-hover:w-full transition-all duration-300" />
               </a>
             ))}
           </div>
@@ -69,7 +70,7 @@ const Header = ({ setIsOpen }: IHeader) => {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(true)}
-              className="glass border-white/10"
+              className="glass border-white/10 hover:bg-white/10 transition-colors"
             >
               <Menu className="h-5 w-5" />
               <span className="sr-only">Open main menu</span>

@@ -25,22 +25,24 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden selection:bg-indigo-500/30">
+    <div className="relative min-h-screen overflow-hidden selection:bg-emerald-500/30">
       {/* Custom cursor effect */}
       <div
-        className="pointer-events-none fixed w-8 h-8 rounded-full border border-indigo-500/50 z-50 mix-blend-difference transition-transform duration-100 ease-out hidden md:block"
+        className="pointer-events-none fixed w-6 h-6 rounded-full border-2 border-emerald-600/60 z-50 mix-blend-screen transition-transform duration-100 ease-out hidden md:block"
         style={{
           left: `${mousePosition.x}px`,
           top: `${mousePosition.y}px`,
           transform: "translate(-50%, -50%)",
+          boxShadow: "0 0 20px rgba(16, 185, 129, 0.4)",
         }}
       />
       <div
-        className="pointer-events-none fixed w-2 h-2 rounded-full bg-indigo-500 z-50 mix-blend-difference transition-transform duration-75 ease-out hidden md:block"
+        className="pointer-events-none fixed w-1.5 h-1.5 rounded-full bg-emerald-600 z-50 mix-blend-screen transition-transform duration-75 ease-out hidden md:block"
         style={{
           left: `${mousePosition.x}px`,
           top: `${mousePosition.y}px`,
           transform: "translate(-50%, -50%)",
+          boxShadow: "0 0 10px rgba(16, 185, 129, 0.6)",
         }}
       />
 
@@ -48,7 +50,7 @@ export default function Page() {
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
         <Button
           variant="ghost"
-          className="justify-start text-base hover:text-indigo-400 transition-colors"
+          className="justify-start text-base font-semibold hover:text-emerald-400 hover:bg-emerald-600/10 transition-all duration-300 rounded-lg"
           asChild
         >
           <a href="#about" onClick={() => setIsOpen(false)}>
@@ -57,7 +59,7 @@ export default function Page() {
         </Button>
         <Button
           variant="ghost"
-          className="justify-start text-base hover:text-indigo-400 transition-colors"
+          className="justify-start text-base font-semibold hover:text-emerald-400 hover:bg-emerald-600/10 transition-all duration-300 rounded-lg"
           asChild
         >
           <a href="#tools-and-techstacks" onClick={() => setIsOpen(false)}>
@@ -66,7 +68,7 @@ export default function Page() {
         </Button>
         <Button
           variant="ghost"
-          className="justify-start text-base hover:text-indigo-400 transition-colors"
+          className="justify-start text-base font-semibold hover:text-emerald-400 hover:bg-emerald-600/10 transition-all duration-300 rounded-lg"
           asChild
         >
           <a href="#projects" onClick={() => setIsOpen(false)}>
@@ -75,7 +77,7 @@ export default function Page() {
         </Button>
         <Button
           variant="ghost"
-          className="justify-start text-base hover:text-indigo-400 transition-colors"
+          className="justify-start text-base font-semibold hover:text-emerald-400 hover:bg-emerald-600/10 transition-all duration-300 rounded-lg"
           asChild
         >
           <a href="#experience" onClick={() => setIsOpen(false)}>
@@ -84,7 +86,7 @@ export default function Page() {
         </Button>
         <Button
           variant="ghost"
-          className="justify-start text-base hover:text-indigo-400 transition-colors"
+          className="justify-start text-base font-semibold hover:text-emerald-400 hover:bg-emerald-600/10 transition-all duration-300 rounded-lg"
           asChild
         >
           <a href="#contact" onClick={() => setIsOpen(false)}>
