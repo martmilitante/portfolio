@@ -100,6 +100,7 @@ Configure the EmailJS template to deliver messages to `martmorbos@gmail.com`. Th
 
 - `from_name`
 - `from_email`
+- `company`
 - `message`
 - `to_email`
 

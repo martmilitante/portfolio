@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,6 +20,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    company: "",
     message: "",
   });
   const [formStatus, setFormStatus] = useState<
@@ -42,6 +44,9 @@ export default function Contact() {
 
     if (!serviceId || !templateId || !publicKey) {
       setFormStatus("error");
+      toast.error("Message could not be sent", {
+        description: "Email service configuration is incomplete.",
+      });
       return;
     }
 
@@ -54,16 +59,23 @@ export default function Contact() {
         {
           from_name: formData.name,
           from_email: formData.email,
+          company: formData.company,
           message: formData.message,
           to_email: "martmorbos@gmail.com",
         },
         publicKey
       );
 
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", company: "", message: "" });
       setFormStatus("success");
+      toast.success("Message sent successfully", {
+        description: "Thanks for reaching out. I will get back to you soon.",
+      });
     } catch {
       setFormStatus("error");
+      toast.error("Message could not be sent", {
+        description: "Please try again in a moment.",
+      });
     }
   };
 
@@ -195,6 +207,20 @@ export default function Contact() {
                       onChange={(event) => handleChange("email", event.target.value)}
                       autoComplete="email"
                       required
+                      className="bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 rounded-lg"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="company" className="text-sm font-semibold text-foreground/90">
+                      Company <span className="font-normal text-muted-foreground">(optional)</span>
+                    </label>
+                    <Input
+                      id="company"
+                      name="company"
+                      placeholder="Acme Inc."
+                      value={formData.company}
+                      onChange={(event) => handleChange("company", event.target.value)}
+                      autoComplete="organization"
                       className="bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 rounded-lg"
                     />
                   </div>
