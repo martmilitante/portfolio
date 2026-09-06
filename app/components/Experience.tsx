@@ -16,7 +16,7 @@ export default function Experience() {
     {
       title: "Software Engineer",
       company: "smartIT - Freelance",
-      date: "2024 - Present",
+      date: "2024 - 2026",
       description:
         "Leading the development of new features and improvements for both frontend and backend. Collaborating with UX/UI designers and Product Managers to implement designs and ensure seamless integration. Working closely with tech leads to ensure high quality code standard for functionality and data flow throughout the application. Building RESTful APIs and integrating them with the front-end to handle data communication efficiently.",
     },

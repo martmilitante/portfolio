@@ -82,7 +82,29 @@ portfolio/
 
 ## Environment Variables
 
-The project currently does not require environment variables. If variables are added later, create a `.env.local` file in the project root and restart the development server after making changes.
+The contact form uses [EmailJS](https://www.emailjs.com/) to send messages directly from the browser. From the project root, copy `.env.local.example` to `.env.local` and replace the placeholder values:
+
+```env
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_emailjs_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+```
+
+PowerShell:
+
+```powershell
+Copy-Item .env.local.example .env.local
+```
+
+Configure the EmailJS template to deliver messages to `martmorbos@gmail.com`. The template receives these variables:
+
+- `from_name`
+- `from_email`
+- `company`
+- `message`
+- `to_email`
+
+Restart the development server after changing environment variables. EmailJS public keys are intended for browser use, but private credentials should never be added to `.env.local` or exposed to the client.
 
 ## Troubleshooting
 

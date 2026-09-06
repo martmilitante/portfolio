@@ -1,11 +1,14 @@
 "use client";
 
+import { FormEvent, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Send, Github, Linkedin, Twitter } from "lucide-react";
+import { Loader2, Mail, Send } from "lucide-react";
 import Link from "next/link";
 import {
   GitHubLogoIcon,
@@ -14,6 +17,68 @@ import {
 } from "@radix-ui/react-icons";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+
+  const handleChange = (
+    field: keyof typeof formData,
+    value: string
+  ) => {
+    setFormData((current) => ({ ...current, [field]: value }));
+    setFormStatus("idle");
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setFormStatus("error");
+      toast.error("Message could not be sent", {
+        description: "Email service configuration is incomplete.",
+      });
+      return;
+    }
+
+    setFormStatus("sending");
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          company: formData.company,
+          message: formData.message,
+          to_email: "martmorbos@gmail.com",
+        },
+        publicKey
+      );
+
+      setFormData({ name: "", email: "", company: "", message: "" });
+      setFormStatus("success");
+      toast.success("Message sent successfully", {
+        description: "Thanks for reaching out. I will get back to you soon.",
+      });
+    } catch {
+      setFormStatus("error");
+      toast.error("Message could not be sent", {
+        description: "Please try again in a moment.",
+      });
+    }
+  };
+
   return (
     <section id="contact" className="py-24 px-6 lg:px-12 relative">
       <div className="max-w-5xl mx-auto">
@@ -112,7 +177,7 @@ export default function Contact() {
               <CardContent className="p-8">
                 <form
                   className="space-y-6"
-                  onSubmit={(e) => e.preventDefault()}
+                  onSubmit={handleSubmit}
                 >
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-semibold text-foreground/90">
@@ -120,7 +185,12 @@ export default function Contact() {
                     </label>
                     <Input
                       id="name"
+                      name="name"
                       placeholder="John Doe"
+                      value={formData.name}
+                      onChange={(event) => handleChange("name", event.target.value)}
+                      autoComplete="name"
+                      required
                       className="bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 rounded-lg"
                     />
                   </div>
@@ -131,7 +201,26 @@ export default function Contact() {
                     <Input
                       id="email"
                       type="email"
+                      name="email"
                       placeholder="john@example.com"
+                      value={formData.email}
+                      onChange={(event) => handleChange("email", event.target.value)}
+                      autoComplete="email"
+                      required
+                      className="bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 rounded-lg"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="company" className="text-sm font-semibold text-foreground/90">
+                      Company <span className="font-normal text-muted-foreground">(optional)</span>
+                    </label>
+                    <Input
+                      id="company"
+                      name="company"
+                      placeholder="Acme Inc."
+                      value={formData.company}
+                      onChange={(event) => handleChange("company", event.target.value)}
+                      autoComplete="organization"
                       className="bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 rounded-lg"
                     />
                   </div>
@@ -141,17 +230,37 @@ export default function Contact() {
                     </label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Tell me about your project..."
+                      value={formData.message}
+                      onChange={(event) => handleChange("message", event.target.value)}
+                      required
                       className="min-h-[150px] bg-background/30 border-slate-300 dark:border-white/10 focus:border-emerald-600 focus:ring-emerald-600/30 transition-all duration-300 resize-none rounded-lg"
                     />
                   </div>
                   <Button
                     type="submit"
+                    disabled={formStatus === "sending"}
                     className="w-full bg-gradient-to-r from-emerald-600 to-slate-600 text-white hover:from-emerald-700 hover:to-slate-700 shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 group font-semibold rounded-lg"
                   >
-                    Send Message
-                    <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    {formStatus === "sending" ? "Sending..." : "Send Message"}
+                    {formStatus === "sending" ? (
+                      <Loader2 className="ml-2 w-4 h-4 animate-spin" />
+                    ) : (
+                      <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    )}
                   </Button>
+                  <p
+                    className="text-sm text-muted-foreground/80"
+                    role="status"
+                    aria-live="polite"
+                  >
+                    {formStatus === "success"
+                      ? "Message sent successfully. I will get back to you soon."
+                      : formStatus === "error"
+                        ? "Unable to send your message. Please try again later."
+                        : "Your message will be sent securely."}
+                  </p>
                 </form>
               </CardContent>
             </Card>
