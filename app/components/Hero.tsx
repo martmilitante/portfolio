@@ -34,27 +34,26 @@ export default function Hero() {
             </Badge>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
             <span className="text-foreground">Hi, I&apos;m </span>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-500">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 via-slate-600 to-emerald-600 animate-gradient">
               Reymart
             </span>
             <br />
-            <span className="text-4xl md:text-6xl text-muted-foreground">
+            <span className="text-4xl md:text-5xl font-semibold text-muted-foreground tracking-wide">
               Fullstack Developer
             </span>
           </h1>
 
-          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
-            I build scalable, performant, and elegant web applications.
-            Passionate about crafting exceptional digital experiences with a
-            keen eye for design and a love for clean code.
+          <p className="text-muted-foreground/90 text-lg md:text-lg leading-relaxed max-w-2xl mx-auto mb-12 font-light">
+            Crafting elegant, performant web applications with clean architecture.
+            Specialized in React, Node.js, and modern web technologies.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 shadow-lg hover:shadow-indigo-500/25 transition-all rounded-full"
+              className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-slate-600 text-white hover:from-emerald-700 hover:to-slate-700 shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 rounded-lg font-semibold"
               asChild
             >
               <Link href="#projects">
@@ -65,7 +64,7 @@ export default function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="w-full sm:w-auto glass rounded-full hover:bg-foreground/5"
+              className="w-full sm:w-auto glass rounded-lg hover:bg-white/10 font-semibold transition-all duration-300"
               asChild
             >
               <Link href="#contact">Contact Me</Link>
