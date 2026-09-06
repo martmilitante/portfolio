@@ -17,7 +17,7 @@ export default function Icon() {
     <div
       style={{
         fontSize: 18,
-        background: "#020617",
+        background: "#0f172a",
         width: "100%",
         height: "100%",
         display: "flex",
@@ -30,7 +30,7 @@ export default function Icon() {
     >
       <span
         style={{
-          backgroundImage: "linear-gradient(to right, #6366f1, #a855f7)",
+          backgroundImage: "linear-gradient(to right, #10b981, #475569)",
           backgroundClip: "text",
           color: "transparent",
         }}
